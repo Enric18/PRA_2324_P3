@@ -36,7 +36,7 @@ class TableEntry {
 
 	}
 	friend std::ostream& operator<<(std::ostream &out, const TableEntry<V> &te){
-		out << te.value << " -> " << te.key << endl;
+		out << te.key << " -> " << te.value << endl;
 	       return out;	
 	}
 
