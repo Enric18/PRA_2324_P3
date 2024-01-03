@@ -27,11 +27,32 @@ class BSTree {
 	  }
        }
 
+       BSNode<T>* insert(BSNode<T>* n, T e){
+	  if(n == nullptr){
+	     return new Node(e);
+	  }
+	  else if(n.elem == e){
+	     throw runtime_error("Elemento ya existe");
+	  }
+	  else if(n.elem < e){
+	     n.right = insert(n.right, e);
+	  }
+	  else{
+	     n.left = insert(n.left, e);
+	  }
+          return n;
+       }
+
+       void print_inorder(std::ostream &out, BSNode<T>* n) const{
+	  if(n != nullptr){
+	     inorden(n.
+	  }
+       }
 
 
     public:
        BSTree(){
-	  nelem=0;
+	  nelem = 0;
 	  root = nullptr;	  
        }
        
@@ -44,8 +65,18 @@ class BSTree {
        }
 
        T operator[](T e) const{
-
+	  return search(e);
        }
+
+       void insert(T e){
+	  root = insert(root, e);
+       }
+
+       friend std::ostream& operator<<(std::ostream &out, const BSTree<T> &bst){
+	  out << 
+       }
+
+
 };
 
 #endif

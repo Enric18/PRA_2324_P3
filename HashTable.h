@@ -27,17 +27,19 @@ class HashTable: public Dict<V> {
 	}
 
     public:
-        void insert(std::string key, V value) override{
+    void insert(std::string key, V value) override{
 	   int pos = h(key);
-      	   TableEntry<V> aux(key, value);
-	   
-	   if(table[pos].search(aux) == -1){
-	      table[pos].insert(table[pos].size(), aux);
-	      n++;
+      	   //TableEntry<V> aux(key, value);
+       TableEntry<V> *aux = new TableEntry<V>(key, value);
+
+	   if(table[pos].search(*aux) == -1){
+
+	       table[pos].prepend(*aux);  // prepend
+		   n++;
 	   }
 	   else{
 	      throw runtime_error("Ya existe esta clave");
-	   }	   
+	   }
 	}
 
 	V search(std::string key) override{
@@ -50,6 +52,7 @@ class HashTable: public Dict<V> {
 	   else{
 	      return table[pos].get(posL).value;
 	   }
+
 	}
 
 	V remove(std::string key) override{
@@ -63,8 +66,8 @@ class HashTable: public Dict<V> {
 	      n--;
               return table[pos].remove(posL).value;
            }
-
 	}
+	
 	int entries() override{
 	   return n;
 	}
@@ -94,13 +97,7 @@ class HashTable: public Dict<V> {
 	}
 
 	V operator[](std::string key){
-	   int val = search(key);
-	   if(val = -1){
-		throw runtime_error("No existe esta clave");
-	   }
-   	   else{
-	      return val;
-	   }	      
+	   return search(key);
 	}
         
 };

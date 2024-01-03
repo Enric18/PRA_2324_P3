@@ -8,8 +8,8 @@ int main() {
     std::cout << "dict.capacity(): " << dict.capacity() << std::endl;
     std::cout << "dict.entries(): " << dict.entries() << std::endl; 
     std::cout << std::endl; 
-
     std::cout << "dict.insert('One', 1) ..." << std::endl;
+
     dict.insert("One", 1);
     std::cout << "dict.insert('Two', 2) ..." << std::endl;
     dict.insert("Two", 2);
@@ -22,11 +22,12 @@ int main() {
     std::cout << "dict.insert('Six', 6) ..." << std::endl;
     dict.insert("Six", 6);
     std::cout << std::endl; 
-
     std::cout << std::endl << dict << std::endl;
+
 
     std::cout << "dict.search('One'): " << dict.search("One") << std::endl;
     std::cout << "dict['Four']: " << dict["Four"] << std::endl;
+
     std::cout << "dict.remove('Three'): " << dict.remove("Three") << std::endl;
     std::cout << std::endl; 
 
@@ -52,6 +53,7 @@ int main() {
     } catch (std::runtime_error &e) {
         std::cout << "dict.remove('Ten') => throwed std::runtime_error: " << e.what() << std::endl; 
     }
+
 
     return 0;
 }
