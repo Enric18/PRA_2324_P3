@@ -43,11 +43,13 @@ class BSTree {
           return n;
        }
 
-       void print_inorder(std::ostream &out, BSNode<T>* n) const{
+       void print_inorden(std::ostream &out, BSNode<T>* n) const{
 	  if(n != nullptr){
-	     inorden(n.
-	  }
-       }
+	     print_inorden(out, n.left());
+		 out << n.elem;
+		 print_inorden(out, n.right());
+		}
+	}
 
 
     public:
